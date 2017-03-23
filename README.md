@@ -1,4 +1,4 @@
-# XML to JSON converter based on AlboPOP Specs
+# XML to JSON converter based on AlboPOP Specs, v0.1.0
 
 AlboPOP scrapers produce feeds in RSS format following the [official specs](http://albopop.it/specs) of the project.
 This utility use a generic XSLT from [JayDaley/XML-to-JSON-in-XSLT](https://github.com/JayDaley/XML-to-JSON-in-XSLT) (style1) and custom transformations to perform a deterministic mapping between AlboPOP XML and AlboPOP JSON
