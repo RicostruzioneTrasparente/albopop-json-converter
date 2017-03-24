@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import sys, json, logging
+import sys, json, re, logging
 from six import string_types
 import lxml.etree as ET
 
@@ -85,12 +85,32 @@ class AlbopopJsonConverter():
 
         raw['rss'] = self.remove_at(raw['rss'])
         raw['rss']['channel'] = self.remove_dollar(raw['rss']['channel'])
+
+        if 'item' in raw['rss']['channel']:
+            if isinstance(raw['rss']['channel']['item'],dict):
+                raw['rss']['channel']['item'] = [raw['rss']['channel']['item']]
+        else:
+            raw['rss']['channel']['item'] = []
+
         raw['rss']['channel']['item'] = self.remove_dollars(raw['rss']['channel']['item'])
         raw['rss']['channel'].update(self.move_domains(raw['rss']['channel']['category'],'channel-category-'))
         del raw['rss']['channel']['category']
+
         for index,item in enumerate(raw['rss']['channel']['item']):
+
+            if 'enclosure' in item:
+                if isinstance(item['enclosure'],dict):
+                    item['enclosure'] = [self.remove_at(item['enclosure'])]
+            else:
+                item['enclosure'] = []
+
             raw['rss']['channel']['item'][index].update(self.move_domains(item['category'],'item-category-'))
             del raw['rss']['channel']['item'][index]['category']
+
+            for k,v in item.items():
+                if isinstance( v , string_types ):
+                    item[k] = re.sub( r' {2,}' , r' ' , v.strip() )
+
 
         return raw
 
