@@ -1,0 +1,290 @@
+{
+    "title": "AlboPOP Feed",
+    "description": "",
+    "type": "object",
+    "required": ["rss"],
+    "properties": {
+        "rss": {
+            "title": "RSS feed",
+            "description": "",
+            "type": "object",
+            "required": ["version","channel"],
+            "properties": {
+                "version": {
+                    "title": "RSS version",
+                    "description": "",
+                    "type": "number"
+                },
+                "channel": {
+                    "title": "RSS channel",
+                    "description": "",
+                    "type": "object",
+                    "required": ["title","link","description","language","pubDate","webMaster","docs","type","name"],
+                    "properties": {
+                        "title": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "link": {
+                            "title": "",
+                            "description": "",
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "description": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "language": {
+                            "title": "",
+                            "description": "",
+                            "type": "string",
+                            "pattern": "[a-z]{2}"
+                        },
+                        "pubDate": {
+                            "title": "",
+                            "description": "",
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "webMaster": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "docs": {
+                            "title": "",
+                            "description": "",
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "copyright": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "creativeCommons:license": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "country": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "region": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "province": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "municipality": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "latitude": {
+                            "title": "",
+                            "description": "",
+                            "type": "number"
+                        },
+                        "longitude": {
+                            "title": "",
+                            "description": "",
+                            "type": "number"
+                        },
+                        "uid": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "type": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "name": {
+                            "title": "",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "item": {
+                            "title": "",
+                            "description": "",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/item"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "item": {
+            "title": "",
+            "description": "",
+            "type": "object",
+            "required": ["title","link","description","pubDate","guid","act"],
+            "properties": {
+                "title": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "link": {
+                    "title": "",
+                    "description": "",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "description": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "pubDate": {
+                    "title": "",
+                    "description": "",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "guid": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "country": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "region": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "province": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "municipality": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "latitude": {
+                    "title": "",
+                    "description": "",
+                    "type": "number"
+                },
+                "longitude": {
+                    "title": "",
+                    "description": "",
+                    "type": "number"
+                },
+                "act": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "pubStart": {
+                    "title": "",
+                    "description": "",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "pubEnd": {
+                    "title": "",
+                    "description": "",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "pubrelStart": {
+                    "title": "",
+                    "description": "",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "pubexeStart": {
+                    "title": "",
+                    "description": "",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "chapter": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "unit": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "amount": {
+                    "title": "",
+                    "description": "",
+                    "type": "number"
+                },
+                "currency": {
+                    "title": "",
+                    "description": "",
+                    "type": "string",
+                    "pattern": "."
+                },
+                "annotation": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "enclosure": {
+                    "title": "",
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enclosure"
+                    }
+                }
+            }
+        },
+        "enclosure": {
+            "title": "",
+            "description": "",
+            "type": "object",
+            "required": ["url","type"],
+            "properties": {
+                "url": {
+                    "title": "",
+                    "description": "",
+                    "type": "string"
+                },
+                "length": {
+                    "title": "",
+                    "description": "",
+                    "type": "number"
+                },
+                "type": {
+                    "title": "",
+                    "description": "",
+                    "type": "string",
+                    "pattern": "[-\\w]+/[-\\w\\+.]+"
+                }
+            }
+        }
+    }
+}

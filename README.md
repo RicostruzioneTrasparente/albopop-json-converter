@@ -14,9 +14,15 @@ You can also import it as a module: `from AlbopopJsonConverter import AlbopopJso
 In your script you can also convert XML starting from a string and not from a file,
 obtaining a regular dict.
 
+## Validation
+
+The final JSON can be validated against the JSON Schema provided (Python 3.4+ required):
+`jsonschema -i [file_to_convert.xml.json] albopop-json-schema.json`.
+
 ## Dependencies
 
-Python3, lxml, vix and the [xslt file](https://github.com/JayDaley/XML-to-JSON-in-XSLT/blob/master/xml2json-style1.xsl).
+Python3 (jsonschema requires v3.4+), lxml, vix and
+the [xslt file](https://github.com/JayDaley/XML-to-JSON-in-XSLT/blob/master/xml2json-style1.xsl).
 
 ## Further informations
 
