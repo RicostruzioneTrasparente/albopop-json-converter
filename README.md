@@ -17,7 +17,8 @@ obtaining a regular dict.
 ## Validation
 
 The final JSON can be validated against the JSON Schema provided (Python 3.4+ required):
-`jsonschema -i [file_to_convert.xml.json] albopop-json-schema.json`.
+`jsonschema -i file_to_convert.xml.json albopop-json-schema.json` or using custom class provided:
+`python AlbopopJsonValidator.py file_to_convert.xml.json [albopop-json-schema.json]`.
 
 ## Dependencies
 
