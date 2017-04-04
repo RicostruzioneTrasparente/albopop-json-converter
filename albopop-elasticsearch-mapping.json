@@ -60,12 +60,12 @@
                     "format": "EE, dd MMM YYYY HH:mm:ss Z",
                     "locale": "us"
                 },
-                "pubrelStart": {
+                "relStart": {
                     "type": "date",
                     "format": "EE, dd MMM YYYY HH:mm:ss Z",
                     "locale": "us"
                 },
-                "pubexeStart": {
+                "exeStart": {
                     "type": "date",
                     "format": "EE, dd MMM YYYY HH:mm:ss Z",
                     "locale": "us"
