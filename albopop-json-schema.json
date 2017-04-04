@@ -214,13 +214,13 @@
                     "type": "string",
                     "format": "date-time"
                 },
-                "pubrelStart": {
+                "relStart": {
                     "title": "",
                     "description": "",
                     "type": "string",
                     "format": "date-time"
                 },
-                "pubexeStart": {
+                "exeStart": {
                     "title": "",
                     "description": "",
                     "type": "string",
