@@ -1,0 +1,161 @@
+{
+    "mappings": {
+        "item": {
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "analyzer": "italian",
+                    "store": true
+                },
+                "link": {
+                    "type": "keyword"
+                },
+                "description": {
+                    "type": "text",
+                    "analyzer": "italian",
+                    "store": true
+                },
+                "pubDate": {
+                    "type": "date",
+                    "format": "EE, dd MMM YYYY HH:mm:ss Z",
+                    "locale": "us"
+                },
+                "guid": {
+                    "type": "keyword"
+                },
+                "country": {
+                    "type": "keyword"
+                },
+                "region": {
+                    "type": "keyword"
+                },
+                "province": {
+                    "type": "keyword"
+                },
+                "municipality": {
+                    "type": "keyword"
+                },
+                "location": {
+                    "type": "geo_point"
+                },
+                "latitude": {
+                    "type": "float"
+                },
+                "longitude": {
+                    "type": "float"
+                },
+                "act": {
+                    "type": "keyword"
+                },
+                "type": {
+                    "type": "keyword"
+                },
+                "pubStart": {
+                    "type": "date",
+                    "format": "EE, dd MMM YYYY HH:mm:ss Z",
+                    "locale": "us"
+                },
+                "pubEnd": {
+                    "type": "date",
+                    "format": "EE, dd MMM YYYY HH:mm:ss Z",
+                    "locale": "us"
+                },
+                "pubrelStart": {
+                    "type": "date",
+                    "format": "EE, dd MMM YYYY HH:mm:ss Z",
+                    "locale": "us"
+                },
+                "pubexeStart": {
+                    "type": "date",
+                    "format": "EE, dd MMM YYYY HH:mm:ss Z",
+                    "locale": "us"
+                },
+                "chapter": {
+                    "type": "keyword"
+                },
+                "unit": {
+                    "type": "keyword"
+                },
+                "amount": {
+                    "type": "float"
+                },
+                "currency": {
+                    "type": "keyword"
+                },
+                "annotation": {
+                    "type": "text",
+                    "analyzer": "italian",
+                    "store": true
+                },
+                "channel": {
+                    "properties": {
+                        "title": {
+                            "type": "text",
+                            "analyzer": "italian",
+                            "store": true
+                        },
+                        "link": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text",
+                            "analyzer": "italian",
+                            "store": true
+                        },
+                        "language": {
+                            "type": "keyword"
+                        },
+                        "pubDate": {
+                            "type": "date",
+                            "format": "EE, dd MMM YYYY HH:mm:ss Z",
+                            "locale": "us"
+                        },
+                        "webMaster": {
+                            "type": "keyword"
+                        },
+                        "docs": {
+                            "type": "keyword"
+                        },
+                        "uid": {
+                            "type": "keyword"
+                        },
+                        "type": {
+                            "type": "keyword"
+                        },
+                        "name": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "copyright": {
+                    "type": "keyword"
+                },
+                "creativeCommons:license": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "enclosure": {
+            "properties": {
+                "url": {
+                    "type": "keyword"
+                },
+                "length": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "keyword"
+                },
+                "content": {
+                    "type": "text",
+                    "analyzer": "italian",
+                    "store": true,
+                    "term_vector": "with_positions_offsets"
+                }
+            },
+            "_parent": {
+                "type": "item"
+            }
+        }
+    }
+}
