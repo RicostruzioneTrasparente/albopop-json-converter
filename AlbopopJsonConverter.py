@@ -3,6 +3,7 @@
 import sys, json, re, logging
 from six import string_types
 import lxml.etree as ET
+from AlbopopJsonValidator import AlbopopJsonValidator
 
 class AlbopopJsonConverter():
 
@@ -31,6 +32,76 @@ class AlbopopJsonConverter():
 
         raw = self.xml2json_raw(xml,xsl)
         return self.normalize(raw)
+
+    def get_items( self , channel = {} ):
+
+        ajv = AlbopopJsonValidator()
+
+        if not ajv.validate(channel):
+            logging.error("JSON is not valid against %s" % ajv.schema_file)
+            return []
+
+        if not channel or not isinstance(channel,dict):
+            return channel
+
+        items = []
+        for item in channel['rss']['channel']['item']:
+
+            new_channel = {
+                "title": channel['rss']['channel']['title'],
+                "link": channel['rss']['channel']['link'],
+                "description": channel['rss']['channel']['description'],
+                "language": channel['rss']['channel']['language'],
+                "pubDate": channel['rss']['channel']['pubDate'],
+                "webMaster": channel['rss']['channel']['webMaster'],
+                "docs": channel['rss']['channel']['docs'],
+                "uid": channel['rss']['channel'].get('uid'),
+                "type": channel['rss']['channel']['type'],
+                "name": channel['rss']['channel']['name']
+            }
+
+            new_item = {
+                "title": item['title'],
+                "link": item['link'],
+                "description": item['description'],
+                "pubDate": item['pubDate'],
+                "guid": item['guid'],
+                "country": item.get( 'country' , channel.get('country') ),
+                "region": item.get( 'region' , channel.get('region') ),
+                "province": item.get( 'province' , channel.get('province') ),
+                "municipality": item.get( 'municipality' , channel.get('municipality') ),
+                "latitude": item.get('latitude'),
+                "longitude": item.get('longitude'),
+                "act": item['act'],
+                "type": item.get('type'),
+                "pubStart": item.get('pubStart'),
+                "pubEnd": item.get('pubEnd'),
+                "relStart": item.get('relStart'),
+                "exeStart": item.get('exeStart'),
+                "chapter": item.get('chapter'),
+                "unit": item.get('unit'),
+                "amount": item.get('amount'),
+                "currency": item.get('currency'),
+                "annotation": item.get('annotation'),
+                "channel": {
+                    k: new_channel[k]
+                    for k in new_channel
+                    if new_channel[k] is not None
+                }
+            }
+
+            new_item['location'] = [
+                new_item['longitude'],
+                new_item['latitude']
+            ] if new_item['longitude'] and new_item['latitude'] else None
+
+            items.append({
+                k: new_item[k]
+                for k in new_item
+                if new_item[k] is not None
+            })
+
+        return items
 
     def remove_dollar( self , obj = {} ):
 
@@ -111,13 +182,15 @@ class AlbopopJsonConverter():
                 if isinstance( v , string_types ):
                     item[k] = re.sub( r' {2,}' , r' ' , v.strip() )
 
-
         return raw
 
 if __name__ == "__main__":
     ajc = AlbopopJsonConverter()
     if len(sys.argv) > 1:
         with open(sys.argv[1]) as fi:
+            result = ajc.xml2json(fi)
             with open(sys.argv[1]+".json",'w') as fo:
-                json.dump(ajc.xml2json(fi),fo)
+                json.dump(result,fo)
+
+            print("Number of items: %d" % len(ajc.get_items(result)))
 
