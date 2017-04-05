@@ -3,7 +3,7 @@
 import sys, json, re, logging
 from six import string_types
 import lxml.etree as ET
-from AlbopopJsonValidator import AlbopopJsonValidator
+from .AlbopopJsonValidator import AlbopopJsonValidator
 
 class AlbopopJsonConverter():
 
