@@ -2,6 +2,7 @@
 
 import sys, json, logging
 from jsonschema import Draft4Validator
+import pkg_resources
 
 class AlbopopJsonValidator():
 
@@ -14,7 +15,7 @@ class AlbopopJsonValidator():
             self.schema = content
         else:
 
-            self.schema_file = content
+            self.schema_file = pkg_resources.resource_filename(__name__,content)
 
             with open(self.schema_file) as f:
 
@@ -33,9 +34,7 @@ class AlbopopJsonValidator():
             result = self.d4v.is_valid(content)
             self.errors = sorted(self.d4v.iter_errors(content), key=str)
         else:
-
             self.content_file = content
-
             with open(self.content_file) as f:
                 content = json.load(f)
                 result = self.d4v.is_valid(content)

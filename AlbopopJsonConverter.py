@@ -4,13 +4,14 @@ import sys, json, re, logging
 from six import string_types
 import lxml.etree as ET
 from .AlbopopJsonValidator import AlbopopJsonValidator
+import pkg_resources
 
 class AlbopopJsonConverter():
 
     def __init__( self , xsl = "xml2json-style1.xsl" ):
 
         if xsl:
-            self.xslt = ET.parse(xsl)
+            self.xslt = ET.parse(pkg_resources.resource_filename(__name__,xsl))
 
     def xml2json_raw( self , xml = None , xsl = "" ):
 
@@ -24,9 +25,13 @@ class AlbopopJsonConverter():
         else:
             dom = ET.parse(xml)
 
+        for d in dom.iter():
+            if d.text:
+                d.text = d.text.replace('"','&quote;')
+
         transform = ET.XSLT(xslt)
 
-        return json.loads(transform(dom).__str__().replace('""','"'))
+        return json.loads(transform(dom).__str__())
 
     def xml2json( self , xml = None , xsl = "" ):
 
