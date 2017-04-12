@@ -32,7 +32,10 @@ class AlbopopJsonValidator():
 
         if isinstance( content , dict ):
             result = self.d4v.is_valid(content)
-            self.errors = sorted(self.d4v.iter_errors(content), key=str)
+            self.errors = sorted({
+                e.message: e
+                for e in self.d4v.iter_errors(content)
+            }.values(), key=str)
         else:
             self.content_file = content
             with open(self.content_file) as f:

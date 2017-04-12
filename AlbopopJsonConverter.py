@@ -47,6 +47,8 @@ class AlbopopJsonConverter():
 
         if not ajv.validate(channel):
             logging.error("JSON is not valid against %s" % ajv.schema_file)
+            for error in ajv.errors:
+                logging.warning("- %s" % error.message)
             return []
 
         if not channel or not isinstance(channel,dict):
