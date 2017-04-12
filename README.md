@@ -6,6 +6,8 @@ custom transformations to perform a deterministic mapping between AlboPOP XML an
 
 ## Usage
 
+### Converte
+
 Clone this repository and install the requirements using pip.
 Then run the script: `python AlbopopJsonConverter.py file_to_convert.xml [file_xslt.xsl]`.
 Result will be written in `file_to_convert.xml.json`.
@@ -14,13 +16,15 @@ You can also import it as a module: `from AlbopopJsonConverter import AlbopopJso
 In your script you can also convert XML starting from a string and not from a file,
 obtaining a regular dict.
 
-## Validation
+### Validate
 
 The final JSON can be validated against the JSON Schema provided (Python 3.4+ required):
 `jsonschema -i file_to_convert.xml.json albopop-json-schema.json` or using custom class provided:
 `python AlbopopJsonValidator.py file_to_convert.xml.json [albopop-json-schema.json]`.
 
-## Merge
+Warning: you can't validate the original XML, you have to convert it to JSON first.
+
+### Merge
 
 The convertion produces a dict from a XML string, so a representation of the channel. According to specifications,
 some channel attributes can be inherited by items, so there is the method `get_items()` to convert channel dict

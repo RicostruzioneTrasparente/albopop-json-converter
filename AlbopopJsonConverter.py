@@ -30,7 +30,7 @@ class AlbopopJsonConverter():
 
         for d in dom.iter():
             if d.text:
-                d.text = d.text.replace('"','&quote;')
+                d.text = d.text.replace('"','&quote;').replace('\\','&#92;')
 
         transform = ET.XSLT(xslt)
 
@@ -143,7 +143,7 @@ class AlbopopJsonConverter():
         obj = {}
         for item in arr:
             if isinstance(item,dict) and not set(item.keys()) - set(['@domain','$']):
-                obj[item['@domain'].split('#')[1].replace(prefix,"")] = item['$']
+                obj[item['@domain'].split('#')[1].replace(prefix,"")] = item.get('$','')
 
         return obj
 
@@ -201,6 +201,4 @@ if __name__ == "__main__":
             result = ajc.xml2json(fi)
             with open(sys.argv[1]+".json",'w') as fo:
                 json.dump(result,fo)
-
-            print("Number of items: %d" % len(ajc.get_items(result)))
 
