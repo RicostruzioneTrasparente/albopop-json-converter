@@ -82,7 +82,7 @@ class AlbopopJsonConverter():
                 "municipality": item.get( 'municipality' , channel.get('municipality') ),
                 "latitude": item.get('latitude'),
                 "longitude": item.get('longitude'),
-                "act": item['act'],
+                "uid": item['uid'],
                 "type": item.get('type'),
                 "pubStart": item.get('pubStart'),
                 "pubEnd": item.get('pubEnd'),

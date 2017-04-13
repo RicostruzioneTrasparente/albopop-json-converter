@@ -44,7 +44,7 @@
                 "longitude": {
                     "type": "float"
                 },
-                "act": {
+                "uid": {
                     "type": "keyword"
                 },
                 "type": {

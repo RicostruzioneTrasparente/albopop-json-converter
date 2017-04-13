@@ -133,7 +133,7 @@
             "title": "",
             "description": "",
             "type": "object",
-            "required": ["title","link","description","pubDate","guid","act"],
+            "required": ["title","link","description","pubDate","guid","uid"],
             "properties": {
                 "title": {
                     "title": "",
@@ -192,7 +192,7 @@
                     "description": "",
                     "type": "number"
                 },
-                "act": {
+                "uid": {
                     "title": "",
                     "description": "",
                     "type": "string"
