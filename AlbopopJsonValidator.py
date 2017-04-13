@@ -43,6 +43,8 @@ class AlbopopJsonValidator():
             for e in self.d4v.iter_errors(content)
         }.values(), key=str)
 
+        return result
+
 if __name__ == "__main__":
 
     if len(sys.argv) > 2:
@@ -56,10 +58,10 @@ if __name__ == "__main__":
         logging.error("Please provide a file JSON to validate.")
         exit()
 
-    logging.warning("%s, %s is %s valid against %s." % (
+    logging.warning("%s, %s is %s against %s." % (
         "Yes" if is_valid else "No",
         ajv.content_file,
-        "" if is_valid else "NOT",
+        "valid" if is_valid else "NOT valid",
         ajv.schema_file
     ))
 

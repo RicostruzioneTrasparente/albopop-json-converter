@@ -119,7 +119,7 @@ class AlbopopJsonConverter():
             return obj
 
         for k,v in obj.items():
-            if isinstance(v,dict) and not set(v.keys()) - set(['$']):
+            if isinstance(v,dict) and not set(v.keys()) - set(['$','@isPermaLink']):
                 obj[k] = v['$']
 
         return obj

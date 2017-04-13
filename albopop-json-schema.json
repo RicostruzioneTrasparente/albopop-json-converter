@@ -103,7 +103,7 @@
                         "uid": {
                             "title": "",
                             "description": "",
-                            "type": "string"
+                            "type": ["string","number"]
                         },
                         "type": {
                             "title": "",
@@ -160,7 +160,7 @@
                 "guid": {
                     "title": "",
                     "description": "",
-                    "type": "string"
+                    "type": ["string","number"]
                 },
                 "country": {
                     "title": "",
@@ -195,7 +195,7 @@
                 "uid": {
                     "title": "",
                     "description": "",
-                    "type": "string"
+                    "type": ["string","number"]
                 },
                 "type": {
                     "title": "",
@@ -229,7 +229,7 @@
                 "chapter": {
                     "title": "",
                     "description": "",
-                    "type": "string"
+                    "type": ["string","number"]
                 },
                 "unit": {
                     "title": "",
