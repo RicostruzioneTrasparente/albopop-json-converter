@@ -97,7 +97,8 @@ class AlbopopJsonConverter():
                     k: new_channel[k]
                     for k in new_channel
                     if new_channel[k] is not None
-                }
+                },
+                "enclosure": item.get('enclosure')
             }
 
             new_item['location'] = [
@@ -176,6 +177,10 @@ class AlbopopJsonConverter():
         raw['rss']['channel']['item'] = self.remove_dollars(raw['rss']['channel']['item'])
         raw['rss']['channel'].update(self.move_domains(raw['rss']['channel']['category'],'channel-category-'))
         del raw['rss']['channel']['category']
+
+        for k,v in raw['rss']['channel'].items():
+            if isinstance( v , string_types ):
+                raw['rss']['channel'][k] = re.sub( r' {2,}' , r' ' , v.strip() )
 
         for index,item in enumerate(raw['rss']['channel']['item']):
 

@@ -7,6 +7,9 @@
     "mappings": {
         "item": {
             "properties": {
+                "uuid": {
+                    "type": "keyword"
+                },
                 "title": {
                     "type": "text",
                     "analyzer": "italian",
@@ -142,6 +145,12 @@
         },
         "enclosure": {
             "properties": {
+                "uuid": {
+                    "type": "keyword"
+                },
+                "filename": {
+                    "type": "keyword"
+                },
                 "url": {
                     "type": "keyword"
                 },
