@@ -182,6 +182,11 @@ class AlbopopJsonConverter():
             if 'enclosure' in item:
                 if isinstance(item['enclosure'],dict):
                     item['enclosure'] = [self.remove_at(item['enclosure'])]
+                elif isinstance(item['enclosure'],list):
+                    item['enclosure'] = [self.remove_at(e) for e in item['enclosure']]
+                else:
+                    logging.warning("Unknown type of enclosure, ignored.")
+                    item['enclosure'] = []
             else:
                 item['enclosure'] = []
 
