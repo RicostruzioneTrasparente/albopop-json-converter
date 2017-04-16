@@ -124,6 +124,9 @@
                         "docs": {
                             "type": "keyword"
                         },
+                        "uuid": {
+                            "type": "keyword"
+                        },
                         "uid": {
                             "type": "keyword"
                         },
@@ -146,6 +149,9 @@
         "enclosure": {
             "properties": {
                 "uuid": {
+                    "type": "keyword"
+                },
+                "path": {
                     "type": "keyword"
                 },
                 "filename": {
