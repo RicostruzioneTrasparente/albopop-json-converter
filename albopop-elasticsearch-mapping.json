@@ -122,6 +122,9 @@
                         "uid": {
                             "type": "keyword"
                         },
+                        "uuid": {
+                            "type": "keyword"
+                        },
                         "type": {
                             "type": "keyword"
                         },
@@ -135,6 +138,16 @@
                 },
                 "creativeCommons:license": {
                     "type": "keyword"
+                },
+                "enclosure": {
+                    "properties": {
+                        "uuid": {
+                            "type": "keyword"
+                        },
+                        "path": {
+                            "type": "keyword"
+                        }
+                    }
                 }
             }
         },
@@ -160,6 +173,20 @@
                     "analyzer": "italian",
                     "store": true,
                     "term_vector": "with_positions_offsets"
+                },
+                "item": {
+                    "properties": {
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "channel": {
+                    "properties": {
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    }
                 }
             },
             "_parent": {
