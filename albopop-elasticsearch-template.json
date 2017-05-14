@@ -164,6 +164,12 @@
                 "uuid": {
                     "type": "keyword"
                 },
+                "hash": {
+                    "type": "keyword"
+                },
+                "ext_id": {
+                    "type": "keyword"
+                },
                 "path": {
                     "type": "keyword"
                 },
