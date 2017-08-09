@@ -141,6 +141,9 @@ class AlbopopJsonConverter():
         if not arr:
             return arr
 
+        if not isinstance(arr,list):
+            arr = [arr]
+
         obj = {}
         for item in arr:
             if isinstance(item,dict) and not set(item.keys()) - set(['@domain','$']):
