@@ -67,5 +67,5 @@ if __name__ == "__main__":
 
     if not is_valid:
         for error in ajv.errors:
-            logging.warning(error.message)
+            logging.warning("%s in %s" % ( error.message , error.path ))
 
