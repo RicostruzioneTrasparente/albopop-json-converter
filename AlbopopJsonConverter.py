@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import sys, json, re, logging
+import sys, json, re, time, datetime, logging
 from six import string_types
+from email.utils import parsedate_to_datetime as parsedate, formatdate
 import lxml.etree as ET
 if __name__ == '__main__':
     from AlbopopJsonValidator import AlbopopJsonValidator
@@ -84,8 +85,15 @@ class AlbopopJsonConverter():
                 "longitude": item.get( 'longitude' , channel['rss']['channel'].get('longitude') ),
                 "uid": item['uid'],
                 "type": item.get('type'),
-                "pubStart": item.get('pubStart'),
-                "pubEnd": item.get('pubEnd'),
+                "pubStart": item.get( 'pubStart' , item['pubDate'] ),
+                "pubEnd": item.get(
+                    'pubEnd',
+                    formatdate(
+                        time.mktime(
+                            (parsedate(item.get( 'pubStart' , item['pubDate'] )) + datetime.timedelta(days=15)).timetuple()
+                        )
+                    )
+                ),
                 "relStart": item.get('relStart'),
                 "exeStart": item.get('exeStart'),
                 "chapter": item.get('chapter'),
