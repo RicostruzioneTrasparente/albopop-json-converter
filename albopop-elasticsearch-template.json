@@ -130,9 +130,6 @@
                         "uid": {
                             "type": "keyword"
                         },
-                        "uuid": {
-                            "type": "keyword"
-                        },
                         "type": {
                             "type": "keyword"
                         },
